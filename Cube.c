@@ -3,21 +3,21 @@
 #include <math.h>
 #include <unistd.h>
 
-// Constants
+// declaration of constants and various parameters
 const float cubeWidth = 20;
 const int width = 40, height = 22;
 const int distancecam = 100;
 const float k1 = 40;
 const int backgroundASCIIcode = ' ';
 
-// Buffers
+// using z-buffering 
 float zBuffer[40 * 22];
 char buffer[40 * 22];
 float A = 0, B = 0, C = 0;
 float x, y, z, ooz;
 int xp, yp, idx;
 
-// 3D transformation functions
+
 float CalculateX(float i, float j, float k) {
     return j * sin(A) * sin(B) * cos(C) - k * cos(A) * sin(B) * cos(C)
          + j * cos(A) * sin(C) + k * sin(A) * sin(C) + i * cos(B) * cos(C);
@@ -33,7 +33,7 @@ float CalculateZ(float i, float j, float k) {
     return k * cos(A) * sin(B) - j * sin(A) * cos(B) + i * sin(B);
 }
 
-// Function to plot a 3D point
+
 void CalculateForthePoint(float i, float j, float k, int ch) {
     x = CalculateX(i, j, k);
     y = CalculateY(i, j, k);
@@ -52,15 +52,15 @@ void CalculateForthePoint(float i, float j, float k, int ch) {
 
 int main() {
     // Clear screen
-    printf("\x1b[2J");
+    printf("\x1b[2J"); //escape code
 
     while (1) {
         // Clear buffers
         memset(buffer, backgroundASCIIcode, width * height);
         memset(zBuffer, 0, width * height * sizeof(float));
 
-        for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX += 1.0) {
-            for (float cubeY = -cubeWidth; cubeY < cubeWidth; cubeY += 1.0) {
+        for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX += 0.15) {
+            for (float cubeY = -cubeWidth; cubeY < cubeWidth; cubeY += 0.15) {
                 // Each face of the cube
                 CalculateForthePoint(cubeX, cubeY, -cubeWidth, '#');  // Front
                 CalculateForthePoint(cubeWidth, cubeY, cubeX, '$');   // Right
@@ -71,7 +71,7 @@ int main() {
             }
         }
 
-        // Reset cursor to top-left
+        // Reset cursor using escape code
         printf("\x1b[H");
 
         // Print buffer
@@ -79,13 +79,13 @@ int main() {
             putchar(k % width ? buffer[k] : '\n');
         }
 
-        // Rotate
+        
         A += 0.05;
         B += 0.05;
         C += 0.01;
 
-        // Delay
-        usleep(30000);
+        
+        usleep(8000*2);
     }
 
     return 0;
