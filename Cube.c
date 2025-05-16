@@ -59,8 +59,8 @@ int main() {
         memset(buffer, backgroundASCIIcode, width * height);
         memset(zBuffer, 0, width * height * sizeof(float));
 
-        for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX += 0.15) {
-            for (float cubeY = -cubeWidth; cubeY < cubeWidth; cubeY += 0.15) {
+        for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX += 1.00 {
+            for (float cubeY = -cubeWidth; cubeY < cubeWidth; cubeY += 1.00) {
                 // Each face of the cube
                 CalculateForthePoint(cubeX, cubeY, -cubeWidth, '#');  // Front
                 CalculateForthePoint(cubeWidth, cubeY, cubeX, '$');   // Right
