@@ -1,0 +1,83 @@
+# 🧊 Rotating 3D ASCII Cube in C
+
+This project renders a rotating 3D cube using ASCII characters directly in the terminal window. It simulates a 3D perspective using mathematical transformations, depth buffering, and continuous frame updates in C.
+
+### 📁 File
+
+* `cube.c` — The main source code that creates and animates the 3D cube.
+
+---
+
+## 📸 Demo
+
+![ASCII Cube Demo](https://user-images.githubusercontent.com/placeholder/demo.gif)
+*(You can replace the above with an actual GIF or video of your program in action)*
+
+---
+
+## 🛠️ How It Works
+
+* The cube is constructed by plotting its 6 faces.
+* 3D coordinates are rotated using basic trigonometry (`sin`, `cos`).
+* A **z-buffer** ensures proper depth rendering for hidden surfaces.
+* The **terminal** is refreshed frame by frame to show smooth animation.
+
+---
+
+## 🧾 Features
+
+* Real-time cube rotation in 3D space
+* Depth sorting using z-buffering
+* ASCII characters used to simulate surface textures
+* Runs in any terminal with ANSI escape code support
+
+---
+
+## 🔧 Requirements
+
+* GCC or any standard C compiler
+* A UNIX-like terminal (Linux/macOS or WSL/MinGW on Windows)
+* `unistd.h` support (for `usleep()`)
+
+---
+
+## 🚀 Build & Run
+
+```bash
+gcc cube.c -o cube -lm
+./cube
+```
+
+> **Note**: `-lm` links the math library.
+
+---
+
+## 🧠 Concepts Used
+
+* 3D Rotation Matrices
+* Z-buffering for hidden surface removal
+* ASCII-based graphical output
+* Terminal control with ANSI escape sequences
+
+---
+
+## 📌 TODO / Ideas
+
+* Add keyboard input to control rotation
+* Enable resizing based on terminal dimensions
+* Add color support using ANSI color codes
+* Export as GIF or video
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License. Feel free to use and modify!
+
+---
+
+## 🙌 Acknowledgements
+
+Inspired by classic ASCII rendering techniques and Donut.c by Andy Sloane.
+
+
